@@ -311,14 +311,14 @@ def play(note_tuples, instrument):
 def main():
     composition = None
     instrument = DEF_INSTRUMENT
-    if len(sys.argv) > 0:
+    try:
         composition = sys.argv[1]
-    if len(sys.argv) > 1:
-        instrument = sys.argv[2]
-    if len(sys.argv) == 0:
-        print("\nError! No composition text supplied!\n" +
-          "Usage: playback.py <composition_file> <instrument--optional>")
-        sys.exit(-1)
+        if len(sys.argv) > 1:
+            instrument = sys.argv[2]
+    except:
+        print("\nError! No composition file or text supplied!\n" +
+          "Usage: playback.py <composition> <instrument--optional>")
+        sys.exit(-1)                                          
 
     # Get list of (note, timing) tuples
     print("\nReading %s ...\n", composition)
